@@ -1,79 +1,75 @@
-# ☀️ HALO-CME Detection using Aditya-L1 Data  
-*ISRO Hackathon 2024 — Problem Statement 10*
+# HALO-CME Detection using Aditya-L1 Particle Data  
+**ISRO Hackathon 2024 – Problem Statement 10**
 
-![Aditya-L1](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Aditya_L1_Spacecraft_-_ISRO.jpg/600px-Aditya_L1_Spacecraft_-_ISRO.jpg)
-
-## 🚀 Overview
-The goal of this project is to identify **HALO Coronal Mass Ejection (CME)** events using particle data collected from the **SWIS-ASPEX Payload** onboard ISRO’s **Aditya-L1** mission. These CME events are critical indicators of space weather patterns that can affect satellite operations, communication systems, and power grids on Earth.
-
-Our solution analyzes **solar wind particle signatures** to distinguish HALO CMEs from normal variations in space plasma.
+## Abstract
+This project presents a method to identify **HALO Coronal Mass Ejection (CME)** events using particle flux data from the **SWIS-ASPEX payload** onboard the **Aditya-L1** spacecraft. HALO CMEs are large-scale solar ejections that appear to surround the solar disk and have the potential to cause significant space weather effects. The approach involves time-series data analysis, signal processing, and threshold-based detection techniques to isolate CME signatures.
 
 ---
 
-## 🔬 Problem Statement  
-**Problem Statement 10 – ISRO Hackathon**  
-> Design a data-driven solution to identify HALO-CME events using the particle data from the SWIS-ASPEX payload.
+## Problem Statement
+**Problem 10**: Develop a data-driven approach to identify HALO-CME events using particle data from the SWIS-ASPEX payload, part of India's Aditya-L1 solar mission.
 
 ---
 
-## 🧠 Core Idea  
-We built a pipeline to:
-
-- Preprocess time-series solar wind data (energy, velocity, charge, flux)
-- Extract key patterns using moving averages, feature engineering, and smoothing
-- Detect possible HALO-CME occurrences using peak detection and rule-based models
-- Visualize the data and predictions in an interpretable way for scientists
+## Project Goals
+- Analyze solar wind ion spectra and flux variations to detect anomalies consistent with HALO CMEs.
+- Develop a repeatable, interpretable detection pipeline suitable for scientific use.
+- Provide visualization and data export capabilities for further study and validation.
 
 ---
 
-## 🗂️ Dataset  
-- **Source**: SWIS-ASPEX Payload (Aditya-L1)
-- **Features**:
-  - Proton energy spectra
-  - Alpha particle counts
-  - Particle velocities and fluxes over time
+## Dataset Description
+- **Source**: Simulated or real data from the **SWIS-ASPEX** payload.
+- **Variables**:
+  - Proton and alpha particle energy levels
+  - Particle flux (particles/cm²·s·sr·MeV)
+  - Time-stamped spectral readings
+  - Derived velocities and average energy
 
 ---
 
-## ⚙️ Tech Stack
-- **Python**
-- **NumPy**, **Pandas**, **Matplotlib**
-- **SciPy** for signal processing
-- **Jupyter Notebook** for iterative analysis
+## Methodology
+
+1. **Data Preprocessing**
+   - Interpolation and forward-fill for missing data
+   - Time normalization and unit consistency
+
+2. **Feature Extraction**
+   - Calculate energy flux trends
+   - Derive sudden gradient shifts in particle behavior
+
+3. **Detection Pipeline**
+   - Apply rolling averages and smoothing filters
+   - Identify sharp rises in proton/alpha flux
+   - Validate against time-localized patterns known to match CME dynamics
+
+4. **Rule-Based Classification**
+   - Thresholds selected based on known CME benchmarks
+   - Detection of sustained, multi-feature anomalies flagged as potential HALO-CMEs
 
 ---
 
-## 📊 Methodology
-
-1. **Data Cleaning**  
-   Missing values were handled using forward filling and interpolation.
-
-2. **Feature Engineering**  
-   Key physical parameters like average energy flux and velocity thresholds were derived.
-
-3. **Anomaly Detection**  
-   Detected CME-like signatures based on:
-   - Sudden spikes in proton/alpha flux
-   - Sustained velocity shifts
-   - Correlation with known CME events
-
-4. **Threshold Logic**  
-   Domain-specific thresholds were applied to detect potential HALO-CME instances.
+## Tools & Libraries
+- **Python 3.10**
+- **Pandas** – Data cleaning and manipulation  
+- **NumPy** – Numerical operations  
+- **Matplotlib / Seaborn** – Scientific plotting  
+- **SciPy** – Signal processing  
+- **Jupyter Notebook** – Analysis environment
 
 ---
 
-## 📈 Sample Output  
-Graphs generated showing spikes in particle activity corresponding to CME predictions:
-
-![Sample Plot](https://raw.githubusercontent.com/AREEB-08/HALO_cme-10/main/plots/sample_plot.png)
+## Results
+- Successfully identified multiple CME-like events from the provided dataset
+- Visual confirmation through flux and velocity anomaly graphs
+- Low false positive rate due to conservative threshold tuning
 
 ---
 
-## 🧪 How to Run
+## How to Run
 
 ```bash
 git clone https://github.com/AREEB-08/HALO_cme-10.git
 cd HALO_cme-10
 pip install -r requirements.txt
 jupyter notebook
-# Open and run 'main.ipynb'
